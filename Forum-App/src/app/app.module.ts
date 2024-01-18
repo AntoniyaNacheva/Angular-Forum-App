@@ -10,9 +10,10 @@ import { PostsListComponent } from './posts-list/posts-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
-import { UserModule } from './user/user.module';
 import { ThemeModule } from './theme/theme.module';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { appInterceptorProvider } from './app.interceptor';
+// import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -22,17 +23,18 @@ import { WelcomeComponent } from './welcome/welcome.component';
     PostsListComponent,
     HomeComponent,
     WelcomeComponent,
+    // NotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    CoreModule,
     HttpClientModule,
+    CoreModule,
     SharedModule,
-    UserModule,
+    // UserModule,
     ThemeModule,
+    AppRoutingModule,
   ],
-  providers: [],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

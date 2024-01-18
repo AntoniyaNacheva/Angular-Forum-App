@@ -54,11 +54,11 @@
         </p>
       </ng-container>
 
-      <button>Login</button>
+      <button [disabled]="form.invalid">Login</button>
 
       <p class="text-center">
         Have an account?
-        <a routerLink="/register">Register</a>
+        <a routerLink="/auth/register">Register</a>
       </p>
     </fieldset>
   </form>

@@ -8,7 +8,18 @@ const routes: Routes = [
     pathMatch: 'full',
     redirectTo: '/home',
   },
-  { path: 'home', component: HomeComponent },
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
+  },
+  // {
+  //   path: '**',
+  //   component: NotFoundComponent,
+  // },
 ];
 
 @NgModule({
