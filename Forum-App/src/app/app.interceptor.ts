@@ -27,7 +27,7 @@ export class AppInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(req).pipe(
+    return next.handle(req).pipe( 
       catchError((err) => {
         if (err.status === 401) {
           // err = null;
