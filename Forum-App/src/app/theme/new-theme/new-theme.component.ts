@@ -10,9 +10,16 @@ import { ApiService } from 'src/app/api.service';
   styleUrls: ['./new-theme.component.css'],
 })
 export class NewThemeComponent {
+  isCancel: boolean = false;
+
   constructor(private apiService: ApiService, private router: Router) {}
 
   o$ = new Observable();
+
+  toggleCancelMode(): void {
+    this.isCancel = !this.isCancel;
+    this.router.navigate(['/themes']);
+  }
 
   newThemeSubmitHandler(form: NgForm): void {
     if (form.invalid) {
@@ -20,6 +27,8 @@ export class NewThemeComponent {
     }
 
     const { themeName, postText } = form.value;
-    this.apiService.createTheme(themeName, postText).subscribe();
+    this.apiService.createTheme(themeName, postText).subscribe(() => {
+      this.router.navigate(['/themes']);
+    });
   }
 }

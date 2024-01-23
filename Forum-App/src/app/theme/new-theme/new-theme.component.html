@@ -47,7 +47,7 @@
         </ng-container>
       </div>
       <div class="new-theme-buttons">
-        <button class="cancel">Cancel</button>
+        <button class="cancel" (click)="toggleCancelMode()">Cancel</button>
         <button class="public" [disabled]="form.invalid">Post</button>
       </div>
     </form>
