@@ -20,8 +20,6 @@ export class NewThemeComponent {
     }
 
     const { themeName, postText } = form.value;
-    this.apiService.createTheme(themeName, postText).subscribe(() => {
-      this.router.navigate(['/themes']);
-    });
+    this.apiService.createTheme(themeName, postText).subscribe();
   }
 }

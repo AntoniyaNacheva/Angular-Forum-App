@@ -10,6 +10,7 @@ import { Post } from '../types/post';
 export class PostsListComponent implements OnInit {
   postsList: Post[] = [];
   isLoading: boolean = true;
+  thereAreNoPosts: boolean = false;
 
   constructor(private apiService: ApiService) {}
 
@@ -17,6 +18,11 @@ export class PostsListComponent implements OnInit {
     this.apiService.getPosts(5).subscribe({
       next: (posts) => {
         this.postsList = posts;
+
+        if (this.postsList.length === 0) {
+          this.thereAreNoPosts = true;
+        }
+
         this.isLoading = false;
       },
       error: (err) => {

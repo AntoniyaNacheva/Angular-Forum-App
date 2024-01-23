@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
 
   toggleEditMode(): void {
     this.isEditMode = !this.isEditMode;
-    console.log(this.form.value);
+    // console.log(this.form.value);
   }
 
   saveProfileHandler(): void {

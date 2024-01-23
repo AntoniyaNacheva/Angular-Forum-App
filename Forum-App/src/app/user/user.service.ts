@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { User } from '../types/user';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription, mergeMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -70,5 +70,9 @@ export class UserService implements OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+
+    const getSum = (a: number, b: number) => {
+      return a + b;
+    };
   }
 }

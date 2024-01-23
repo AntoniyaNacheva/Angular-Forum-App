@@ -13,6 +13,10 @@ export class ApiService {
 
   posts: any = [];
 
+  get postCollection(): string {
+    return this.posts || [];
+  }
+
   getTheme(id: string) {
     const { apiUrl } = environment;
     return this.http.get<Theme>(`${apiUrl}/themes/${id}`);
@@ -30,6 +34,7 @@ export class ApiService {
   getPosts(limit?: number) {
     const { apiUrl } = environment;
     const limitFilter = limit ? `?limit=${limit}` : '';
+    
     return this.http
       .get<Post[]>(`${apiUrl}/posts${limitFilter}`)
       .pipe(tap((posts) => (this.posts = posts)));
